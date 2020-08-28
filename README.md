@@ -51,19 +51,20 @@ const App = () => {
   );
 };
 ```
-- Context API: **Even Toggle1 and Toggle2 use the same ToggleContext, their data is not twisted.**
+- Context API: 
+> **Even Toggle1 and Toggle2 use the same ToggleContext, their data is not twisted.**
 ```javascript
 const App = () => {
   return (
     <div className="flex">
-      // Toggle1
+      {/* Toggle 1 */}
       <Toggle>
         <Toggle.Switch />
         <Toggle.Switch />
         <Toggle.Switch />
         <Toggle.Switch />
       </Toggle>
-      // Toggle2
+      {/* Toggle 2 */}
       <Toggle>
         <Toggle.Switch />
         <Toggle.Switch />
@@ -71,6 +72,39 @@ const App = () => {
         <Toggle.Switch />
       </Toggle>
     </div>
+  );
+};
+```
+> **For Wrapper Component, you don't have to worry about the children component type with Context API**
+```javascript
+const App = () => {
+  return (
+    <div className="flex">
+      <Toggle>
+        <div>
+          {/* Switch can still receive right props */}
+          <Toggle.Switch />
+        </div>
+      </Toggle>
+    </div>
+  );
+};
+```
+> **Put object in state to avoid uncessary rerender in context**
+```javascript
+const Toggle = ({
+  children,
+  className,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  const [on, setOn] = useState(false);
+  return (
+    // value in state, won't cause unnecessary re-render
+    <ToggleContext.Provider value={{ on, setOn }}>
+      <div className={className}>{children}</div>
+    </ToggleContext.Provider>
   );
 };
 ```
