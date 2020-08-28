@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import Switch from './Switch';
+import React from 'react';
+import Toggle from 'components/Toggle/Toggle';
 
 const App = () => {
-  const [on, setOn] = useState(false);
   return (
-    <div>
-      <Switch onClick={() => setOn(!on)} on={on} />
+    <div className="flex">
+      <Toggle>
+        <Toggle.Switch />
+        <Toggle.Switch />
+        <Toggle.Switch />
+        <Toggle.Switch />
+      </Toggle>
+      <Toggle>
+        <Toggle.Switch />
+        <Toggle.Switch />
+        <Toggle.Switch />
+        <Toggle.Switch />
+      </Toggle>
     </div>
   );
 };
