@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useToggleContext } from './hooks';
 
-const Switch = ({ on, onClick }: { on?: boolean; onClick?: () => any }) => {
+const Switch = () => {
+  const { on, setOn } = useToggleContext();
   return (
     <div>
       <button
@@ -14,7 +16,7 @@ const Switch = ({ on, onClick }: { on?: boolean; onClick?: () => any }) => {
             'bg-blue-60': on,
           }
         )}
-        onClick={onClick}
+        onClick={() => setOn!(!on)}
       >
         <div
           className={classNames(
