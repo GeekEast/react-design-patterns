@@ -51,24 +51,40 @@ const App = () => {
   );
 };
 ```
-- Context API: **Even Toggle1 and Toggle2 use the same ToggleContext, their data is not twisted.**
+- Context API: 
+> **Even Toggle1 and Toggle2 use the same ToggleContext, their data is not twisted.**
 ```javascript
 const App = () => {
   return (
     <div className="flex">
-      // Toggle1
+      {/* Toggle 1 */}
       <Toggle>
         <Toggle.Switch />
         <Toggle.Switch />
         <Toggle.Switch />
         <Toggle.Switch />
       </Toggle>
-      // Toggle2
+      {/* Toggle 2 */}
       <Toggle>
         <Toggle.Switch />
         <Toggle.Switch />
         <Toggle.Switch />
         <Toggle.Switch />
+      </Toggle>
+    </div>
+  );
+};
+```
+> **For Wrapper Component, you don't have to worry about the children component type with Context API**
+```javascript
+const App = () => {
+  return (
+    <div className="flex">
+      <Toggle>
+        <div>
+          {/* Switch can still receive right props */}
+          <Toggle.Switch />
+        </div>
       </Toggle>
     </div>
   );
