@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import { useToggleContext } from './hooks';
 
@@ -38,4 +38,4 @@ const Switch = () => {
   );
 };
 
-export default Switch;
+export default memo(Switch);
